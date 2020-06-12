@@ -13,5 +13,25 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  flightdata = [
+    {
+      name:"Indigo",
+      time:"2:00",
+      airpot:"KM"
+    },{
+      name:"Spice Jet",
+      time:"2:30",
+      airpot:"HYM"
+    },{
+      name:"Air India",
+      time:"4:00",
+      airpot:"HYSM"
+    }
+  ]
+  public filterdata ;
 
+  searchFlight(value){
+    let filterdata = this.flightdata.filter( res=> res.name.indexOf(value) > -1)
+    this.filterdata = filterdata
+  }
 }

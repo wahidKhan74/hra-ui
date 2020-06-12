@@ -1,1 +1,51 @@
-<p>profile works!</p>
+
+<ul>
+    <li>{{user.name | uppercase }}</li>
+    <li>{{user.email | lowercase }}</li>
+    <li>{{user.dob | date :'dd-MMM-yyyy'}}</li>
+    <li *ngIf="user.number > 200000" >{{user.number | number}}</li>
+    <li>{{user.currency| currency :'INR'}}</li>
+</ul>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>DOB</th>
+        <th>Number</th>
+        <th>Currency</th>
+    </tr>
+    <tr *ngFor="let user of userList">
+        <th>{{user.name | titlecase}}</th>
+        <th>{{user.email}}</th>
+        <th>{{user.dob | date :'dd-MMM-yyyy'}}</th>
+        <th>{{user.number}}</th>
+        <th>{{user.currency | currency :'INR'}}</th>
+    </tr>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" [ngStyle]="getStyle()" (click)="changeMode('list')">List View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="changeMode('grid')">Grid / Map View</a>
+        </li>
+      </ul>
+      
+</table>
+
+<hr>
+
+<div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'list'">
+         <p [ngClass]="{'active' :(viewMode =='list')}"> Show data when List Selected</p>
+    </div>
+    <div *ngSwitchCase="'grid'">
+        <p [ngClass]="{'bigger' :(viewMode =='grid')}">Show data when Grid Selected</p> 
+    </div>
+    <div *ngSwitchDefault="'grid'">
+        Defualt select / otherwise
+    </div>
+</div>
+
+<p [ngClass]="(viewMode =='list' ) ? 'active' : 'not-active' ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel doloribus, illum ab dolorem id ex ullam totam exercitationem quis, inventore vero non officiis obcaecati vitae hic tempore quasi tenetur commodi?</p>

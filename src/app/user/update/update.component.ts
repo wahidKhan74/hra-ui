@@ -8,6 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class UpdateComponent implements OnInit {
 
+  public submitted:boolean = false;
   constructor(private formBuilder : FormBuilder) { }
 
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class UpdateComponent implements OnInit {
 
 
   updateUser(){
+    this.submitted = true;
     console.log(this.updateUserForm);
     
   }

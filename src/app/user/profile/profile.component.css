@@ -1,0 +1,17 @@
+table,th,td,tr{
+    border: 2px solid red;
+}
+
+.active{
+    color: red;
+}
+
+.not-active{
+    color: grey;
+}
+
+.bigger{
+    font-size:2em;
+    color:green;
+}
+
