@@ -5,7 +5,7 @@ import { ListComponent } from './list/list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateComponent } from './update/update.component';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 
@@ -19,7 +19,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [CreateComponent,ListComponent,ProfileComponent,UpdateComponent],
   imports: [
-    FormsModule, HttpClientModule, CommonModule, RouterModule.forChild(routes)
+    FormsModule,ReactiveFormsModule, HttpClientModule, CommonModule, RouterModule.forChild(routes)
   ],
   providers:[UserService],
   exports: [RouterModule]

@@ -1,1 +1,44 @@
-<p>create works!</p>
+<!-- // 1. include / import reactive module
+// 2. new form control / form group / form builder
+// 3. registering form control into template -->
+<div class="container">
+    Message : <input type="text" [formControl]="msg">
+
+    <button (click)="showMsg()">Show Message</button>
+    
+</div>
+<br> <br>
+<div class="container" >
+    <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
+        <label for="">
+            First Name: 
+            <input type="text" placeholder="Enter First Name" formControlName="firstName">
+        </label><br>
+        <label for="">
+            Last Name: 
+            <input type="text" placeholder="Enter Last Name" formControlName="lastName">
+        </label><br>
+        <label for="">
+            Email: 
+            <input type="email" placeholder="Enter Email" formControlName="email">
+        </label> <br>
+        <div formGroupName ="address">
+            <h1>User Address Info</h1>
+            <label for="">
+                City: 
+                <input type="text" placeholder="Enter City" formControlName="city">
+            </label> <br>
+            <label for="">
+                Sate: 
+                <input type="text" placeholder="Enter State" formControlName="state">
+            </label> <br>
+            <label for="">
+                Zip Code: 
+                <input type="text" placeholder="Enter Zip code" formControlName="zipcode">
+            </label> <br>
+
+        </div>
+        <button type="submit" >Create User</button>
+    </form>
+</div>
+

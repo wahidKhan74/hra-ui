@@ -1,1 +1,45 @@
-<p>update works!</p>
+<div class="container" >
+    <form [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
+        <label for="">
+            First Name: 
+            <input type="text" placeholder="Enter First Name" formControlName="firstName">
+            <div *ngIf="f1.firstName.errors" class="error">
+                <div *ngIf="f1.firstName.errors.required"> First Name is required</div>
+            </div>
+        </label><br>
+        <label for="">
+            Last Name: 
+            <input type="text" placeholder="Enter Last Name" formControlName="lastName">
+        </label><br>
+        <label for="">
+            Email: 
+            <input type="email" placeholder="Enter Email" formControlName="email">
+            <div *ngIf="updateUserForm.controls.email.errors" class="error">
+                <div *ngIf="updateUserForm.controls.email.errors.required"> Email is required</div>
+                <div *ngIf="updateUserForm.controls.email.errors.email"> Email should be a valid email</div>
+            </div>
+        </label> <br>
+        <div formGroupName ="address">
+            <p>User Address Info</p>
+            <label for="">
+                City: 
+                <input type="text" placeholder="Enter City" formControlName="city">
+                <div *ngIf="f2.city.errors" class="error">
+                    <div *ngIf="f2.city.errors.required"> City is required</div>
+                    <div *ngIf="f2.city.errors.minlength"> Minimum 3 character</div>
+                    <div *ngIf="f2.city.errors.maxlength"> Maximum 6 character</div>
+                </div>
+            </label> <br>
+            <label for="">
+                Sate: 
+                <input type="text" placeholder="Enter State" formControlName="state">
+            </label> <br>
+            <label for="">
+                Zip Code: 
+                <input type="text" placeholder="Enter Zip code" formControlName="zipcode">
+            </label> <br>
+
+        </div>
+        <button type="submit" >Update User</button>
+    </form>
+</div>

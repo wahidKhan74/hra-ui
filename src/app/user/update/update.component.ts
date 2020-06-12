@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder : FormBuilder) { }
 
   ngOnInit(): void {
   }
 
+  updateUserForm :any =  this.formBuilder.group({
+    firstName:['',Validators.required],
+    lastName:[''],
+    email:['',[Validators.required,Validators.email]],
+    address: this.formBuilder.group({
+      city:['',[Validators.required,Validators.maxLength(6),Validators.minLength(3)]],
+      state:[''],
+      zipcode:['']
+    })
+  })
+
+
+  updateUser(){
+    console.log(this.updateUserForm);
+    
+  }
+
+  get f1 (){
+    return this.updateUserForm.controls;
+  }
+  get f2 (){
+    return this.updateUserForm.controls.address.controls;
+  }
 }
