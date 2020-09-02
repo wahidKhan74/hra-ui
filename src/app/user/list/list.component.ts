@@ -24,4 +24,13 @@ export class ListComponent implements OnInit {
         }
       )
   }
+
+  deleteUser(userId){
+    console.log("delete user by Id : "+userId);
+    
+    this.userSrv.deleteOneUser(userId).subscribe(
+      res=>{ console.log( res);  },
+      err=>{ }
+    )
+  }
 }
